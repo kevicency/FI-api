@@ -1,4 +1,7 @@
-require! '../lib/config'
+process.env['FI_API__STORAGE_ACCOUNT']='figeodata';
+process.env['FI_API__STORAGE_SECRET']=new Buffer('secret').toString('base64');
+
+require! 'lib/config'
 require! azureAPI: 'azure'
 var azure
 
@@ -7,7 +10,7 @@ _it = it
 describe \azure, ->
   before ->
     sinon.spy azureAPI, \createTableService
-    azure := require '../lib/azure'
+    azure := require 'lib/azure'
   after ->
     azureAPI.createTableService.restore!
 

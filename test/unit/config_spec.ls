@@ -1,4 +1,4 @@
-require! '../lib/config'
+require! 'lib/config'
 
 describe \config, ->
 

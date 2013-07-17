@@ -26,11 +26,11 @@ module.exports = (grunt) ->
         ignoreLeaks: false
         growl: true
       unit:
-        src: ['test/test_helper.js', 'test/**/*_spec.ls', '!test/integration/*']
+        src: ['test/test_helper.js', 'test/unit/**/*_spec.ls']
       integration:
         options:
           timeout: 5000
-        src: ['test/integration/helper.js', 'test/integration/*_spec.ls']
+        src: ['test/test_helper.js', 'test/integration/**/*_spec.ls']
 
   # These plugins provide necessary tasks.
   grunt.loadNpmTasks 'grunt-contrib-watch'
