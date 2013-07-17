@@ -1,24 +1,18 @@
-process.env['FI_API__STORAGE_ACCOUNT']='figeodata';
-process.env['FI_API__STORAGE_SECRET']=new Buffer('secret').toString('base64');
-
 require! 'lib/config'
+require! 'lib/azure'
 require! azureAPI: 'azure'
-var azure
 
 _it = it
 
 describe \azure, ->
-  before ->
-    sinon.spy azureAPI, \createTableService
-    azure := require 'lib/azure'
-  after ->
-    azureAPI.createTableService.restore!
-
   describe \#client, ->
-    _it 'creates an azure TableService with credentials from config', ->
-      azureAPI.createTableService.should.have.been.calledWith config.STORAGE_ACCOUNT, config.STORAGE_SECRET
+    _it 'uses credentials from config', ->
+      azure.client.should.have.deep.property \authenticationProvider.storageAccount,
+        config.STORAGE_ACCOUNT
+      azure.client.should.have.deep.property \authenticationProvider.storageAccessKey,
+        config.STORAGE_SECRET
 
-    _it 'returns the TableService instance', ->
+    _it 'returns a azureAPI.TableService instance', ->
       azure.client@@should.be.equal azureAPI.TableService
 
   describe '#createEntityClass(options{table, partitionKey, client})', ->
@@ -82,7 +76,7 @@ describe \azure, ->
         _it 'fetches entity from from azure table', ->
           EntityClass.get 1, @cb
 
-          azure.client.queryEntity.should.have.been.calledWith 'entities', 1
+          azure.client.queryEntity.should.have.been.calledWith 'entities', 'allEntities', '1'
 
         _it 'creates entity and invokes callback with it', ->
           EntityClass.client.queryEntity.yields void, RowKey: 1

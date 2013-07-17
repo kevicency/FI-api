@@ -26,7 +26,7 @@ module.exports = (grunt) ->
         ignoreLeaks: false
         growl: true
       unit:
-        src: ['test/test_helper.js', 'test/unit/**/*_spec.ls']
+        src: ['test/test_helper.js', 'test/unit/unit_helper.ls', 'test/unit/**/*_spec.ls']
       integration:
         options:
           timeout: 5000

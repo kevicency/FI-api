@@ -5,6 +5,7 @@ client = azure.createTableService(config.STORAGE_ACCOUNT, config.STORAGE_SECRET)
 
 module.exports =
   client: client
+
   createEntityClass: (options = {}) -> class
     @table = options.table
     @partitionKey = options.partitionKey
@@ -18,12 +19,17 @@ module.exports =
       callback err, entities
 
     @get = (id, callback) ->
-      err, row <~ @client.queryEntity @table, id
+      err, row <~ @client.queryEntity @table, @partitionKey, "#id"
       entity = new @(row) unless err?
       callback err, entity
 
     (row) ->
       this <<< row
       @id = row.RowKey
-      delete @RowKey
-      delete @_
+      for crap in <[RowKey PartitionKey Timestamp _]>
+        delete @[crap]
+
+  ensureTable: (name, callback) ->
+    err <~ client.createTableIfNotExists(name)
+
+    callback err, 'ok' unless err?
