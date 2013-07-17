@@ -15,8 +15,8 @@ npm install
 
 ### Set ENV_VARIABLES
 
-  * FI_API__STORAGE_ACCOUNT
-  * FI_API__STORAGE_SECRET
+  * `FI_API__STORAGE_ACCOUNT=figeodata`
+  * `FI_API__STORAGE_SECRET`
 
 *The keys are stored here:
 [FI-meta](https://github.com/FreudenbergGroup/FI-meta/blob/master/Secrets/fi-api_keys.sh)
@@ -49,9 +49,5 @@ or
 npm test && grunt watch
 ```
 
-This runs all unit tests in the project. There is also `grunt test:integration`
-which runs the integration tests. These tests require valid Twitter API keys to work
-(see below) though.
-
-During active development you might want to use `grunt watch` which runs the
-test on every filechange
+There is also `grunt test:integration` which runs the integration tests. These tests require valid API keys to work
+though.
