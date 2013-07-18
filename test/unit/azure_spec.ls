@@ -73,7 +73,7 @@ describe \azure, ->
           sinon.stub EntityClass.client, \queryEntity
         afterEach -> EntityClass.client.queryEntity.restore!
 
-        _it 'fetches entity from from azure table', ->
+        _it 'fetches entity from azure table', ->
           EntityClass.get 1, @cb
 
           azure.client.queryEntity.should.have.been.calledWith 'entities', 'allEntities', '1'
