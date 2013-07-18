@@ -1,14 +1,31 @@
 {
   "name": "FI-Globe",
-  "version": "0.0.0",
-  "description": "",
-  "main": "app.js",
+  "description": "API that powers the websites of the Freudenberg Group",
+  "version": "0.9.0",
+  "homepage": "http://api.freudenberg.com",
+  "author": {
+    "name": "Kevin Mees",
+    "email": "km@expertsinside.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/FreudenbergGroup/FI-api.git"
+  },
+  "bugs": {
+    "url": "http://github.com/FreudenbergGroup/FI-api/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/FreudenbergGroup/FI-api/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
   "scripts": {
     "test": "NODE_PATH=. grunt test"
   },
-  "repository": "",
-  "author": "",
-  "license": "BSD",
   "dependencies": {
     "express": "~3.3.3",
     "nconf": "~0.6.7",
