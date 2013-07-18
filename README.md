@@ -43,11 +43,5 @@ For continous testing do
 NODE_PATH=. grunt test watch
 ```
 
-or
-
-```sh
-npm test && grunt watch
-```
-
 There is also `grunt test:integration` which runs the integration tests. These tests require valid API keys to work
 though.
