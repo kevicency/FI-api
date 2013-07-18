@@ -7,9 +7,9 @@ module.exports = (grunt) ->
       gruntfile:
         src: 'Gruntfile.coffee'
       lib:
-        src: ['lib/{,*/}*.{ls,js}']
+        src: ['lib/**/*.{ls,js}']
       test:
-        src: ['test/{,*/}*.{ls,js}']
+        src: ['test/**/*.{ls,js}']
 
     watch:
       lib:
